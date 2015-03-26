@@ -1,0 +1,10 @@
+target/
+.idea/
+.idea_modules/
+*.iml
+logs
+*.bat
+*.jar
+tmp
+storage
+deploy.sh
