@@ -17,6 +17,21 @@ object Test extends App {
   import scala.concurrent.ExecutionContext.Implicits.global
   val a: Future[List[Long]] = Future.sequence(res)
   val times = Await.result(a, 1.minute)
-  println(times.mkString("\n"))
+  val min = times.min
+  val max = times.max
+  val mean = times.sum.toDouble / count
+  val st = times.toArray.sorted
+  val median = st(count/2)
+  val ninetyFiveCentile = st(count*95/100)
+
+  println(
+    s"""
+       |Total:  $count
+       |Min:    $min
+       |Max:    $max
+       |Mean:   $mean
+       |Median: $median
+       |95cent: $ninetyFiveCentile
+     """.stripMargin)
 
 }
